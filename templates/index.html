@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Fraud Detection System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- TOP HEADER -->
+    <header class="header">
+
+        <div>
+            <h1>ENTERPRISE FRAUD DETECTION SYSTEM</h1>
+            <p>AI Based Fraud Detection & Real Time Risk Scoring</p>
+        </div>
+
+        <div class="live">
+            ● LIVE
+        </div>
+
+    </header>
+
+
+    <!-- MAIN DASHBOARD -->
+    <main class="dashboard-grid">
+
+
+        <!-- TRANSACTION PANEL -->
+        <section class="panel transaction-panel">
+
+            <div class="panel-title">
+                REAL-TIME TRANSACTION ANALYSIS
+            </div>
+
+            <form action="/predict" method="POST">
+
+                <label>
+                    Transaction Amount (₹)
+                </label>
+
+                <input
+                    type="number"
+                    name="amount"
+                    step="0.01"
+                    placeholder="Enter transaction amount"
+                    required
+                >
+
+
+                <label>
+                    Transaction Hour (0-23)
+                </label>
+
+                <input
+                    type="number"
+                    name="hour"
+                    min="0"
+                    max="23"
+                    placeholder="Example: 14"
+                    required
+                >
+
+
+                <label>
+                    High Risk Location
+                </label>
+
+                <select name="location_risk">
+
+                    <option value="0">
+                        No
+                    </option>
+
+                    <option value="1">
+                        Yes
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Previous Fraud History
+                </label>
+
+                <select name="previous_fraud">
+
+                    <option value="0">
+                        No
+                    </option>
+
+                    <option value="1">
+                        Yes
+                    </option>
+
+                </select>
+
+
+                <button type="submit">
+                    ANALYZE TRANSACTION
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- RISK SCORING PANEL -->
+        <section class="panel risk-panel">
+
+            <div class="panel-title">
+                AI RISK SCORING
+            </div>
+
+            <div class="risk-meter">
+
+                <div class="meter-circle">
+
+                    <div class="meter-inner">
+
+                        <span class="score">
+                            AI
+                        </span>
+
+                        <small>
+                            RISK SCORE
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-levels">
+
+                <div class="low">
+                    ● LOW RISK
+                    <span>0 - 30</span>
+                </div>
+
+                <div class="medium">
+                    ● MEDIUM RISK
+                    <span>31 - 70</span>
+                </div>
+
+                <div class="high">
+                    ● HIGH RISK
+                    <span>71 - 100</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALERT PANEL -->
+        <section class="panel alerts-panel">
+
+            <div class="panel-title">
+                FRAUD MONITORING
+            </div>
+
+
+            <div class="alert safe">
+
+                <div>
+                    <strong>AI MODEL</strong>
+                    <p>Fraud detection model active</p>
+                </div>
+
+                <span>
+                    ACTIVE
+                </span>
+
+            </div>
+
+
+            <div class="alert safe">
+
+                <div>
+                    <strong>RISK ENGINE</strong>
+                    <p>Real-time scoring enabled</p>
+                </div>
+
+                <span>
+                    ONLINE
+                </span>
+
+            </div>
+
+
+            <div class="alert warning">
+
+                <div>
+                    <strong>TRANSACTION MONITOR</strong>
+                    <p>Monitoring incoming transactions</p>
+                </div>
+
+                <span>
+                    LIVE
+                </span>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <h3>
+                    SYSTEM STATUS
+                </h3>
+
+                <p>
+                    <span>Machine Learning Model</span>
+                    <b class="online">ONLINE</b>
+                </p>
+
+                <p>
+                    <span>Risk Scoring</span>
+                    <b class="online">ACTIVE</b>
+                </p>
+
+                <p>
+                    <span>Fraud Detection</span>
+                    <b class="online">READY</b>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM SECTION -->
+        <section class="panel activity-panel">
+
+            <div class="panel-title">
+                BEHAVIORAL PATTERN MONITOR
+            </div>
+
+            <div class="chart">
+
+                <div class="chart-line">
+                    ╱╲___╱╲____╱╲___╱╲____╱╲
+                </div>
+
+                <div class="chart-info">
+
+                    <div>
+                        <span>Transactions</span>
+                        <strong>Monitoring</strong>
+                    </div>
+
+                    <div>
+                        <span>AI Analysis</span>
+                        <strong>Active</strong>
+                    </div>
+
+                    <div>
+                        <span>Detection</span>
+                        <strong>Real Time</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
