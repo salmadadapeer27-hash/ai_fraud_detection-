@@ -1,1 +1,264 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fraud Analysis Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div>
+            <h1>ENTERPRISE FRAUD DETECTION SYSTEM</h1>
+            <p>AI Based Fraud Detection & Real Time Risk Scoring</p>
+        </div>
+
+        <div class="live">
+            ● ANALYSIS COMPLETE
+        </div>
+
+    </header>
+
+
+    <!-- RESULT PAGE -->
+    <div class="analysis-page">
+
+        <!-- LEFT SIDE -->
+        <div class="panel analysis-score-card">
+
+            <div class="panel-title">
+                REAL-TIME RISK SCORE
+            </div>
+
+            <div class="score-section">
+
+                <div class="score-circle">
+
+                    <div class="score-circle-inner">
+
+                        <span class="big-score">
+                            {{ risk_score }}
+                        </span>
+
+                        <small>
+                            / 100
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <p class="risk-text">
+                    {{ result }}
+                </p>
+
+                <p class="analysis-message">
+
+                    {% if risk_score >= 70 %}
+
+                        High-risk transaction detected.
+                        Immediate review is recommended.
+
+                    {% elif risk_score >= 30 %}
+
+                        Suspicious activity detected.
+                        Additional verification is recommended.
+
+                    {% else %}
+
+                        Transaction appears normal.
+                        No major fraud indicators detected.
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="panel ai-report-card">
+
+            <div class="panel-title">
+                AI FRAUD ANALYSIS REPORT
+            </div>
+
+
+            <div class="report-row">
+
+                <div>
+                    <span>AI Model</span>
+                    <strong>Random Forest</strong>
+                </div>
+
+                <div class="status-active">
+                    ACTIVE
+                </div>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div>
+                    <span>Risk Score</span>
+                    <strong>{{ risk_score }} / 100</strong>
+                </div>
+
+                <div>
+                    ANALYZED
+                </div>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div>
+                    <span>Risk Classification</span>
+                    <strong>{{ result }}</strong>
+                </div>
+
+                <div>
+                    COMPLETE
+                </div>
+
+            </div>
+
+
+            <div class="report-row">
+
+                <div>
+                    <span>Processing Mode</span>
+                    <strong>Real-Time Analysis</strong>
+                </div>
+
+                <div class="status-active">
+                    LIVE
+                </div>
+
+            </div>
+
+
+            <!-- RISK LEVEL -->
+
+            <div class="risk-indicator">
+
+                <h3>RISK LEVEL</h3>
+
+                <div class="risk-bar">
+
+                    <div class="risk-low"></div>
+                    <div class="risk-medium"></div>
+                    <div class="risk-high"></div>
+
+                </div>
+
+                <div class="risk-labels">
+
+                    <span>LOW</span>
+                    <span>MEDIUM</span>
+                    <span>HIGH</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM PANEL -->
+
+        <div class="panel decision-panel">
+
+            <div class="panel-title">
+                AI DECISION
+            </div>
+
+
+            <div class="decision-content">
+
+                {% if risk_score >= 70 %}
+
+                    <div class="decision-icon high-decision">
+                        !
+                    </div>
+
+                    <div>
+
+                        <h2>HIGH RISK TRANSACTION</h2>
+
+                        <p>
+                            The AI model detected strong fraud indicators
+                            in this transaction.
+                        </p>
+
+                    </div>
+
+
+                {% elif risk_score >= 30 %}
+
+                    <div class="decision-icon medium-decision">
+                        !
+                    </div>
+
+                    <div>
+
+                        <h2>MEDIUM RISK TRANSACTION</h2>
+
+                        <p>
+                            The transaction contains unusual patterns
+                            and may require verification.
+                        </p>
+
+                    </div>
+
+
+                {% else %}
+
+                    <div class="decision-icon low-decision">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h2>LOW RISK TRANSACTION</h2>
+
+                        <p>
+                            The AI model found no significant fraud
+                            indicators in this transaction.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <a href="/" class="analyse-again">
+                ← ANALYZE ANOTHER TRANSACTION
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
